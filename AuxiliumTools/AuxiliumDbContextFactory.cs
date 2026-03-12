@@ -11,8 +11,7 @@ public class AuxiliumDbContextFactory : IDesignTimeDbContextFactory<AuxiliumDbCo
     {
         var configPath = ExtractConfigPath(args)
             ?? Environment.GetEnvironmentVariable("AUXILIUM_CONFIG_PATH")
-            ?? throw new InvalidOperationException(
-                "Config path must be supplied via --config-path <path> or the AUXILIUM_CONFIG_PATH environment variable.");
+            ?? throw new InvalidOperationException("Config path must be supplied via --config-path <path> or the AUXILIUM_CONFIG_PATH environment variable.");
 
         var configuration = new ConfigurationBuilder()
             .AddYamlFile(configPath, optional: false, reloadOnChange: false)
@@ -25,10 +24,20 @@ public class AuxiliumDbContextFactory : IDesignTimeDbContextFactory<AuxiliumDbCo
         var database = configuration["Databases:MariaDB:Database"] ?? throw new InvalidOperationException("MariaDB Database not found in configuration.");
 
         var connectionString =
-            $"Server={host};Port={port};Database={database};User={username};Password={password};" +
-            "CharSet=utf8mb4;Pooling=true;MinimumPoolSize=5;MaximumPoolSize=100;" +
-            "ConnectionLifeTime=300;ConnectionIdleTimeout=180;CancellationTimeout=5;" +
-            "ConnectionReset=false;DefaultCommandTimeout=30;";
+            $"Server={host};"
+            + $"Port={port};"
+            + $"Database={database};"
+            + $"User={username};"
+            + $"Password={password};"
+            + $"CharSet=utf8mb4;"
+            + $"Pooling=true;"
+            + $"MinimumPoolSize=5;"
+            + $"MaximumPoolSize=100;"
+            + $"ConnectionLifeTime=300;"
+            + $"ConnectionIdleTimeout=180;"
+            + $"CancellationTimeout=5;"
+            + $"ConnectionReset=false;"
+            + $"DefaultCommandTimeout=30;";
 
         var optionsBuilder = new DbContextOptionsBuilder<AuxiliumDbContext>();
         optionsBuilder.UseMySql(
