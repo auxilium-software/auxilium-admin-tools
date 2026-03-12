@@ -1,14 +1,12 @@
-﻿using Spectre.Console.Cli;
-using System;
-using System.Collections.Generic;
-using System.Text;
+﻿using Microsoft.Extensions.DependencyInjection;
+using Spectre.Console.Cli;
 
 namespace AuxiliumServices.AdminTools.Infrastructure
 {
     internal sealed class TypeResolver(IServiceProvider provider) : ITypeResolver, IDisposable
     {
         public object? Resolve(Type? type) =>
-            type is null ? null : provider.GetService(type);
+            type is null ? null : provider.GetRequiredService(type);
 
         public void Dispose()
         {

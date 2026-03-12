@@ -1,5 +1,7 @@
 ﻿using AuxiliumServices.AdminTools.Infrastructure;
 using AuxiliumServices.AdminTools.Tools;
+using AuxiliumSoftware.AuxiliumServices.Common.Services;
+using AuxiliumSoftware.AuxiliumServices.Common.Services.Implementations;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Spectre.Console.Cli;
@@ -51,6 +53,7 @@ internal class Program
 
     private static void RegisterTools(IServiceCollection services)
     {
+        services.AddTransient<IPasswordService, PasswordService>();
         services.AddTransient<CreateAdminUserTool>();
         services.AddTransient<PasswordResetTool>();
     }

@@ -1,4 +1,5 @@
 ﻿using AuxiliumServices.AdminTools.Common;
+using AuxiliumSoftware.AuxiliumServices.Common.Services;
 using AuxiliumSoftware.AuxiliumServices.Common.Services.Implementations;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
@@ -7,7 +8,7 @@ using Spectre.Console.Cli;
 
 namespace AuxiliumServices.AdminTools.Tools
 {
-    public class PasswordResetTool(IConfiguration configuration) : AsyncCommand
+    public class PasswordResetTool(IConfiguration configuration, IPasswordService passwordService) : AsyncCommand
     {
         public override async Task<int> ExecuteAsync(CommandContext context, CancellationToken cancellationToken)
         {
@@ -58,7 +59,6 @@ namespace AuxiliumServices.AdminTools.Tools
             }
 
 
-            var passwordService = new PasswordService(configuration);
             var hashedPassword = passwordService.HashPassword(newPassword);
 
             user.PasswordHash = hashedPassword;

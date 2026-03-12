@@ -1,6 +1,7 @@
 ﻿using AuxiliumServices.AdminTools.Common;
 using AuxiliumSoftware.AuxiliumServices.Common.EntityFramework.EntityModels;
 using AuxiliumSoftware.AuxiliumServices.Common.Enumerators;
+using AuxiliumSoftware.AuxiliumServices.Common.Services;
 using AuxiliumSoftware.AuxiliumServices.Common.Services.Implementations;
 using AuxiliumSoftware.AuxiliumServices.Common.Utilities;
 using Konscious.Security.Cryptography;
@@ -11,7 +12,7 @@ using Spectre.Console.Cli;
 
 namespace AuxiliumServices.AdminTools.Tools;
 
-public sealed class CreateAdminUserTool(IConfiguration configuration) : AsyncCommand
+public sealed class CreateAdminUserTool(IConfiguration configuration, IPasswordService passwordService) : AsyncCommand
 {
     public override async Task<int> ExecuteAsync(CommandContext context, CancellationToken cancellationToken)
     {
@@ -43,7 +44,6 @@ public sealed class CreateAdminUserTool(IConfiguration configuration) : AsyncCom
 
         var userId = UUIDUtilities.GenerateV5(DatabaseObjectTypeEnum.User);
 
-        var passwordService = new PasswordService(configuration);
         var hashedPassword = passwordService.HashPassword(password);
 
         var user = new UserEntityModel
