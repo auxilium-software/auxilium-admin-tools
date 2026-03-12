@@ -33,6 +33,7 @@ internal class Program
 
         var services = new ServiceCollection();
         services.AddSingleton(configuration);
+        RegisterTools(services);
 
         var registrar = new TypeRegistrar(services);
         var app = new CommandApp(registrar);
@@ -46,6 +47,12 @@ internal class Program
         });
 
         return app.Run(remainingArgs);
+    }
+
+    private static void RegisterTools(IServiceCollection services)
+    {
+        services.AddTransient<CreateAdminUserTool>();
+        services.AddTransient<PasswordResetTool>();
     }
 
     private static (string? ConfigPath, string[] RemainingArgs) ExtractConfigPath(string[] args)
