@@ -1,0 +1,6 @@
+
+.vs/
+*.user
+/AuxiliumTools/obj
+/AuxiliumTools/bin
+/AuxiliumTools/Migrations

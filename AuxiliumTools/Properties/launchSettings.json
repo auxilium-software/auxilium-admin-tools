@@ -1,0 +1,10 @@
+{
+  "profiles": {
+    "AuxiliumTools": {
+      "commandName": "Project"
+    },
+    "Container (Dockerfile)": {
+      "commandName": "Docker"
+    }
+  }
+}
