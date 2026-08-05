@@ -33,7 +33,7 @@ public sealed class SetInitialSystemSettingsTool(
             CreatedByUserId = null,
             ConfigKey = AuxiliumServices.Common.EntityFramework.Enumerators.SystemSettingKeyEnum.Instance_Branding_Name,
             ConfigValue = JsonSerializer.Serialize(AnsiConsole.Ask<string>("[green]instance.branding.name:[/]")),
-            ValueType = AuxiliumServices.Common.EntityFramework.Enumerators.SystemSettingValueTypeEnum.Json,
+            ValueType = AuxiliumServices.Common.EntityFramework.Enumerators.SystemSettingValueTypeEnum.String,
             ReasonForModification = "Set through the Admin Tools CLI by a server administrator.",
         };
         SystemSettingEntityModel instance_navigation_portalBaseUrl = new()
@@ -43,7 +43,7 @@ public sealed class SetInitialSystemSettingsTool(
             CreatedByUserId = null,
             ConfigKey = AuxiliumServices.Common.EntityFramework.Enumerators.SystemSettingKeyEnum.Instance_Navigation_PortalBaseUrl,
             ConfigValue = JsonSerializer.Serialize(AnsiConsole.Ask<string>("[green]instance.navigation.portalBaseUrl:[/]")),
-            ValueType = AuxiliumServices.Common.EntityFramework.Enumerators.SystemSettingValueTypeEnum.Json,
+            ValueType = AuxiliumServices.Common.EntityFramework.Enumerators.SystemSettingValueTypeEnum.String,
             ReasonForModification = "Set through the Admin Tools CLI by a server administrator.",
         };
         SystemSettingEntityModel instance_fqdn = new()
@@ -53,7 +53,7 @@ public sealed class SetInitialSystemSettingsTool(
             CreatedByUserId = null,
             ConfigKey = AuxiliumServices.Common.EntityFramework.Enumerators.SystemSettingKeyEnum.Instance_Fqdn,
             ConfigValue = JsonSerializer.Serialize(AnsiConsole.Ask<string>("[green]instance.fqdn:[/]")),
-            ValueType = AuxiliumServices.Common.EntityFramework.Enumerators.SystemSettingValueTypeEnum.Json,
+            ValueType = AuxiliumServices.Common.EntityFramework.Enumerators.SystemSettingValueTypeEnum.String,
             ReasonForModification = "Set through the Admin Tools CLI by a server administrator.",
         };
 
