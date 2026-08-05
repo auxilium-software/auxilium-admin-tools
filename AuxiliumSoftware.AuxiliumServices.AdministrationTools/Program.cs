@@ -45,6 +45,7 @@ internal class Program
             config.AddCommand<CreateAdminUserTool>("create-administrator-user")             .WithDescription("Creates an Administrator user.");
             config.AddCommand<PasswordResetTool>("reset-user-password")                     .WithDescription("Resets a user's password.");
             config.AddCommand<SetInitialSystemSettingsTool>("set-initial-system-settings")  .WithDescription("Sets the initial system settings.");
+            config.AddCommand<SetInitiallyRequiredData>("set-initially-required-data")      .WithDescription("Sets the initially required data.");
         });
 
         try
