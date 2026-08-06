@@ -39,7 +39,8 @@ RUN dotnet tool install --global dotnet-ef \
 
 ENV PATH="${PATH}:/root/.dotnet/tools"
 
-ENTRYPOINT ["sh", "-c", "dotnet ef database update --project AuxiliumSoftware.AuxiliumServices.AdministrationTools/AuxiliumSoftware.AuxiliumServices.AdministrationTools.csproj -- --config-path /etc/auxilium/config.yaml"]
+# ENTRYPOINT ["sh", "-c", "dotnet ef database update --project AuxiliumSoftware.AuxiliumServices.AdministrationTools/AuxiliumSoftware.AuxiliumServices.AdministrationTools.csproj -- --config-path /etc/auxilium/config.yaml"]
+ENTRYPOINT ["sh", "-c", "dotnet ef migrations add \"AutoMigration_$(date +%Y%m%d%H%M%S)\" --project AuxiliumSoftware.AuxiliumServices.AdministrationTools/AuxiliumSoftware.AuxiliumServices.AdministrationTools.csproj -- --config-path /etc/auxilium/config.yaml && dotnet ef database update --project AuxiliumSoftware.AuxiliumServices.AdministrationTools/AuxiliumSoftware.AuxiliumServices.AdministrationTools.csproj -- --config-path /etc/auxilium/config.yaml"]
 
 
 # ==================================================
